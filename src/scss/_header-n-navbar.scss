@@ -1,0 +1,41 @@
+// HEADER STYLES
+.header{
+  width: 100%;
+}
+
+.header h1{
+  background-color: #333333;
+  font-size: 64px;
+  font-weight: 300;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 16px;
+  text-align: center;
+}
+
+// NAVBAR AND NAVBAR ELEMENT STYLES
+.navbar{
+  font-size: 0;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+
+.navbar_nav-item{
+  background-color: #E7E7E7;
+  display: inline-block;
+  margin: 0;
+  width: 25%;
+}
+
+.navbar_nav-item h4{
+  text-align: center;
+}
+
+.home-tab, .concert-tab, .carpool-tab{
+  border-right: 1px solid #CCCCCC;
+}
+
+.selected{
+  background-color: #006687;
+}

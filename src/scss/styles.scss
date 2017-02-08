@@ -1,14 +1,11 @@
-* {
-	box-sizing: border-box;
-}
+// IMPORTED LIBRARIES
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-body{
-	font-family: Helvetica, Arial, sans-serif;
-}
+// IMPORTED Sass ASSETS
+@import "header-n-navbar";
 
-h1 {
-	font-size: 300px;
-	text-align: center;
-	color: chartreuse;
-	font-size: 12vw;
-}
+*{box-sizing: border-box;}
+
+#app-container{font-family: "Open Sans", sans-serif;}
+// NOTE:
+// light - 300, 300i - light italic, 400 - regular, 400i - regular italic
