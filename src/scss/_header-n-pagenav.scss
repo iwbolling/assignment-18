@@ -13,22 +13,23 @@
   text-align: center;
 }
 
-// NAVBAR AND NAVBAR ELEMENT STYLES
-.navbar{
+// pagenav AND pagenav ELEMENT STYLES
+.pagenav{
   font-size: 0;
-  text-align: center;
   margin: 0;
+  text-align: center;
   width: 100%;
 }
 
-.navbar_nav-item{
+.pagenav_nav-item{
   background-color: #E7E7E7;
   display: inline-block;
   margin: 0;
   width: 25%;
 }
 
-.navbar_nav-item h4{
+.pagenav_nav-item h4{
+  font-size: 16px;
   text-align: center;
 }
 

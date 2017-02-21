@@ -2,10 +2,23 @@
 @import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 // IMPORTED Sass ASSETS
-@import "header-n-navbar";
+@import "header-n-pagenav";
+@import "route-container";
 
 *{box-sizing: border-box;}
 
-#app-container{font-family: "Open Sans", sans-serif;}
+#app-container{
+  font-family: "Open Sans", sans-serif;
+}
 // NOTE:
 // light - 300, 300i - light italic, 400 - regular, 400i - regular italic
+
+.page-content{
+  background-image: url("../../dist/images/Flag_of_Iceland.svg");
+  // credit for image to Ævar Arnfjörð Bjarmason on Wikimedia Commons
+  background-size: cover;
+  background-position: center;
+  // background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+}
