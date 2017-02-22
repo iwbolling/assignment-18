@@ -5,6 +5,10 @@ var divHeader = document.querySelector(".header");
 var divNavbar = document.querySelector(".navbar");
 var divAllNavbarItems = document.querySelectorAll(".navbar_nav-item");
 var divRouteContainer = document.querySelector(".route-container");
+var divHomeTab = document.querySelector(".home-tab");
+var divConcertTab = document.querySelector(".concert-tab");
+var divCarpoolTab = document.querySelector(".carpool-tab");
+var divFlightTab = document.querySelector(".flight-tab");
 
 // FUNCTIONS - PAGE CONTENT GENERATION
 function pageContentHome(){
@@ -84,14 +88,18 @@ function pageContentCarpools(){
 };
 function pageContentFlights(){
   divRouteContainer.innerHTML = `<div class="flights-page">
-                                  <div class="flights-page_content">
+                                  <div class="flights-page_content row">
                                     <h2>Flights</h2>
-                                    <h3>Arrivals</h3>
-                                    <table class="table-arrivals">
-                                    </table>
-                                    <h3>Departures</h3>
-                                    <table class="table-departures">
-                                    </table>
+                                    <div class="col-sm-12 col-md-6">
+                                      <h3>Arrivals</h3>
+                                      <table class="table-arrivals">
+                                      </table>
+                                    </div>
+                                    <div class="col-sm-23 col-md-6">
+                                      <h3>Departures</h3>
+                                      <table class="table-departures">
+                                      </table>
+                                    </div>
                                   </div>
                                  </div>`;
   var tableArrivals = document.querySelector(".table-arrivals");
@@ -144,7 +152,12 @@ function pageContentRouter(){
     pageContentCarpools();
   } else if (window.location.hash === "#flights"){
     pageContentFlights();
+  } else {
+    window.location.hash = "#home";
   };
 }
 pageContentRouter();
+
+// EVENT LISTENERS
 window.addEventListener("hashchange",pageContentRouter);
+// divAllNavbarItems.addEventListener("click");
