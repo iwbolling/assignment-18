@@ -5,11 +5,6 @@ var divHeader = document.querySelector(".header");
 var divNavbar = document.querySelector(".navbar");
 var divAllNavbarItems = document.querySelectorAll(".navbar_nav-item");
 var divRouteContainer = document.querySelector(".route-container");
-// NOTE: the following specific tab variables may not need to be used
-var divHomeTab = document.querySelector(".home-tab");
-var divConcertTab = document.querySelector(".concert-tab");
-var divCarpoolTab = document.querySelector(".carpool-tab");
-var divFlightTab = document.querySelector(".flight-tab");
 
 // FUNCTIONS - PAGE CONTENT GENERATION
 function pageContentHome(){
@@ -87,6 +82,57 @@ function pageContentCarpools(){
                                   </div>`
   });
 };
+function pageContentFlights(){
+  divRouteContainer.innerHTML = `<div class="flights-page">
+                                  <div class="flights-page_content">
+                                    <h2>Flights</h2>
+                                    <h3>Arrivals</h3>
+                                    <table class="table-arrivals">
+                                    </table>
+                                    <h3>Departures</h3>
+                                    <table class="table-departures">
+                                    </table>
+                                  </div>
+                                 </div>`;
+  var tableArrivals = document.querySelector(".table-arrivals");
+  var tableDepartures = document.querySelector(".table-departures");
+  $.getJSON("http://apis.is/flight?language=en&type=arrivals").then(function(serverRes){
+    let flightRes = serverRes.results;
+    var genFlights = flightRes.map(function(flightObj){
+      return `<tr>
+                <td>${flightObj.date}</td>
+                <td>${flightObj.plannedArrival}</td>
+                <td>${flightObj.from}</td>
+                <td>${flightObj.airline}</td>
+              </tr>`;
+    }).join("");
+    tableArrivals.innerHTML = `<tr>
+                                <th>Date</th>
+                                <th>Arrival Time</th>
+                                <th>Origin</th>
+                                <th>Airline</th>
+                              </tr>
+                              ${genFlights}`
+  });
+  $.getJSON("http://apis.is/flight?language=en&type=departures").then(function(serverRes){
+    let flightRes = serverRes.results;
+    var genFlights = flightRes.map(function(flightObj){
+      return `<tr>
+                <td>${flightObj.date}</td>
+                <td>${flightObj.plannedArrival}</td>
+                <td>${flightObj.to}</td>
+                <td>${flightObj.airline}</td>
+              <tr>`;
+    }).join("");
+    tableDepartures.innerHTML = `<tr>
+                                  <th>Date</th>
+                                  <th>Departure Time</th>
+                                  <th>Origin</th>
+                                  <th>Airline</th>
+                                </tr>
+                                ${genFlights}`
+  });
+};
 
 // FUNCTIONS - PAGE CONTENT ROUTER
 function pageContentRouter(){
@@ -96,6 +142,8 @@ function pageContentRouter(){
     pageContentConcerts();
   } else if (window.location.hash === "#carpools"){
     pageContentCarpools();
+  } else if (window.location.hash === "#flights"){
+    pageContentFlights();
   };
 }
 pageContentRouter();
