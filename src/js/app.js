@@ -3,7 +3,7 @@ import $ from "jquery";
 // VARIABLES - DOM ELEMENT SELECTIONS
 var divHeader = document.querySelector(".header");
 var divNavbar = document.querySelector(".navbar");
-var divAllNavbarItems = document.querySelectorAll(".navbar_nav-item");
+var divAllNavbarItems = document.querySelectorAll(".pagenav_nav-item");
 var divRouteContainer = document.querySelector(".route-container");
 var divHomeTab = document.querySelector(".home-tab");
 var divConcertTab = document.querySelector(".concert-tab");
@@ -144,9 +144,7 @@ function pageContentFlights(){
 
 // FUNCTIONS - PAGE CONTENT ROUTER
 function pageContentRouter(){
-  if (window.location.hash === "#home"){
-    pageContentHome();
-  } else if (window.location.hash === "#concerts"){
+  if (window.location.hash === "#concerts"){
     pageContentConcerts();
   } else if (window.location.hash === "#carpools"){
     pageContentCarpools();
@@ -154,6 +152,7 @@ function pageContentRouter(){
     pageContentFlights();
   } else {
     window.location.hash = "#home";
+    pageContentHome();
   };
 }
 pageContentRouter();
@@ -161,3 +160,27 @@ pageContentRouter();
 // EVENT LISTENERS
 window.addEventListener("hashchange",pageContentRouter);
 // divAllNavbarItems.addEventListener("click");
+for (var i=0;i<divAllNavbarItems.length;i++){
+  let currentNavbarItem = divAllNavbarItems[i];
+  currentNavbarItem.addEventListener("click", function(evt){
+    var clickedItem = evt.currentTarget;
+    var arrayOfClasses = [...clickedItem.classList];
+    clearAllNavbarItems();
+    clickedItem.classList.add("selected");
+    if (arrayOfClasses.indexOf("concert-tab") !== -1){
+      window.location.hash = "#concerts";
+    } else if (arrayOfClasses.indexOf("carpool-tab") !== -1){
+      window.location.hash = "#carpools";
+    } else if (arrayOfClasses.indexOf("flight-tab") !== -1){
+      window.location.hash = "#flights";
+    } else if (arrayOfClasses.indexOf("home-tab") !== -1){
+      window.location.hash = "#home";
+    } else{
+    }
+  })
+}
+function clearAllNavbarItems(){
+  for (let i=0;i<divAllNavbarItems.length;i++){
+    divAllNavbarItems[i].classList.remove("selected");
+  }
+}
