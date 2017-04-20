@@ -159,7 +159,7 @@ pageContentRouter();
 
 // EVENT LISTENERS
 window.addEventListener("hashchange",pageContentRouter);
-// divAllNavbarItems.addEventListener("click");
+
 for (var i=0;i<divAllNavbarItems.length;i++){
   let currentNavbarItem = divAllNavbarItems[i];
   currentNavbarItem.addEventListener("click", function(evt){
